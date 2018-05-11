@@ -3,6 +3,7 @@ const { BOT_TOKEN } = process.env;
 const Bot = require('node-telegram-bot-api');
 const fetch = require('node-fetch');
 const state = require('./things.json');
+const httpServer = require('./httpServer');
 
 const bot = new Bot(BOT_TOKEN, { polling: true });
 const triggers = [
@@ -72,3 +73,8 @@ bot.on('message', msg => {
     bot.sendMessage(chatId, formatItem(item), { parse_mode: 'Markdown' });
   }
 });
+
+var port = process.env.PORT || 3000;
+app.listen(port);
+
+console.log('Listening to %s', port);
