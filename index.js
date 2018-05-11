@@ -51,9 +51,22 @@ ${formatState(state)}
 
 ${url ? url : ''}
 `;
+
+let intervalId = null;
 bot.on('message', msg => {
   const chatId = msg.chat.id;
-  // console.log(JSON.stringify(msg, null, 2));
+  if (msg.text === 'run') {
+    clearInterval(intervalId);
+    bot.sendMessage(chatId, 'Окей, буду напоминать тебе каждые 2 часа');
+
+    intervalId = setInterval(() => {
+      const item = chooseRandom(state);
+      bot.sendMessage(chatId, '2 часа прошло\n' + formatItem(item), {
+        parse_mode: 'Markdown',
+      });
+    }, 1000 * 60 * 60 * 2);
+  }
+
   if (triggers.some(t => t.test(msg.text.toLowerCase()))) {
     const item = chooseRandom(state);
     bot.sendMessage(chatId, formatItem(item), { parse_mode: 'Markdown' });
