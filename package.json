@@ -3,14 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "engines": {
-    "node": "9.11.1"
-  },
   "scripts": {
     "start": "dotenv node index.js"
   },
   "dependencies": {
     "dotenv": "^5.0.1",
+    "koa": "^2.5.1",
     "node-fetch": "^2.1.2",
     "node-telegram-bot-api": "^0.30.0",
     "ramda": "^0.25.0"
