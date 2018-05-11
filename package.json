@@ -9,6 +9,7 @@
   "dependencies": {
     "dotenv": "^5.0.1",
     "node-fetch": "^2.1.2",
-    "node-telegram-bot-api": "^0.30.0"
+    "node-telegram-bot-api": "^0.30.0",
+    "ramda": "^0.25.0"
   }
 }

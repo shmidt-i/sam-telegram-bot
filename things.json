@@ -1,0 +1,46 @@
+[
+  {
+    "state": {
+      "estimate": 64,
+      "estimateParts": 36,
+      "progressParts": 2
+    },
+    "priority": 16,
+    "name": "Совершенный код | Стив Макконнелл",
+    "cta": "📖 Прочитай главу! 📖",
+    "url": null,
+    "type": "book"
+  },
+  {
+    "state": {
+      "estimate": null
+    },
+    "priority": 16,
+    "name": "Английский Lingoda",
+    "cta": "✍🏾 Запишись на занятие! ✍🏾",
+    "type": "online",
+    "url": "https://www.lingoda.com/en/account"
+  },
+  {
+    "state": {
+      "estimate": 24,
+      "progress": 0
+    },
+    "priority": 4,
+    "name": "Системное администрирование Linux",
+    "cta": "👓 Посмотри лекцию 👓",
+    "type": "online",
+    "url": "http://lectoriy.mipt.ru/course/technotrack_sysadm_linux"
+  },
+  {
+    "state": {
+      "estimate": 19,
+      "progress": 0
+    },
+    "priority": 4,
+    "name": "Бизнес для чайников",
+    "cta": "👓 Посмотри лекцию 👓",
+    "type": "online",
+    "url": "http://lectoriy.mipt.ru/course/Business-Beginners-14L/lectures"
+  }
+]
