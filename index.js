@@ -17,43 +17,10 @@ const triggers = [
 ].map(s => new RegExp(s));
 
 const chooseRandom = require('./chooseRandom');
-const PRIORITIES = {
-  0: 'Неприоритетно',
-  1: 'Неприоритетно',
-  2: 'Неприоритетно',
-  4: 'ℹ️ Normal',
-  8: '⚠️ High',
-  16: '🔥 Critical',
-};
-const { isNil, complement } = require('ramda');
-const notNil = complement(isNil);
-const allNotNil = (...args) => args.every(notNil);
-const formatState = state => {
-  console.log(state);
-  const { estimate, estimateParts, progressParts, progress } = state;
-  if (allNotNil(estimate, progress)) {
-    return `${progress}/${estimate}`;
-  } else if (allNotNil(estimateParts, progressParts)) {
-    return `${progressParts}/${estimateParts}`;
-  }
-  return 'N/A';
-};
-const formatItem = ({ state, priority, name, url, type, cta }) => `
-${cta}
-
-*Название:*
-${name}
-
-*Приоритет:*
-${PRIORITIES[priority]}
-
-*Прогресс:*
-${formatState(state)}
-
-${url ? url : ''}
-`;
-
+const formatItem = require('./Views/itemFull');
+const { renderStatusAll } = require('./Views/state');
 let intervalId = null;
+
 bot.on('message', msg => {
   const chatId = msg.chat.id;
   if (msg.text === 'run') {
@@ -71,6 +38,9 @@ bot.on('message', msg => {
   if (triggers.some(t => t.test(msg.text.toLowerCase()))) {
     const item = chooseRandom(state);
     bot.sendMessage(chatId, formatItem(item), { parse_mode: 'Markdown' });
+  }
+  if (msg.text === 'status') {
+    bot.sendMessage(chatId, renderStatusAll(state), { parse_mode: 'Markdown' });
   }
 });
 
