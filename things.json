@@ -13,6 +13,17 @@
   },
   {
     "state": {
+      "estimate": 6,
+      "progress": 2.5
+    },
+    "priority": 4,
+    "name": "Hardcore Functional Programming in JavaScript",
+    "cta": "🎥 Посмотри видос! 🎥",
+    "url": "https://frontendmasters.com/courses/functional-javascript/",
+    "type": "online"
+  },
+  {
+    "state": {
       "estimate": null
     },
     "priority": 16,
