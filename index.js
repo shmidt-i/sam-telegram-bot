@@ -23,6 +23,10 @@ let intervalId = null;
 
 bot.on('message', msg => {
   const chatId = msg.chat.id;
+  if (msg.text === 'stop') {
+    clearInterval(intervalId);
+    bot.sendMessage(chatId, "Пока перестаю напоминать 😉")
+  }
   if (msg.text === 'run') {
     clearInterval(intervalId);
     bot.sendMessage(chatId, 'Окей, буду напоминать тебе каждые 2 часа');
