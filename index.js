@@ -20,23 +20,28 @@ const chooseRandom = require('./chooseRandom');
 const formatItem = require('./Views/itemFull');
 const { renderStatusAll } = require('./Views/state');
 let intervalId = null;
-
-bot.on('message', msg => {
+const { getWavesBtcPrice } = require('./checkWavesBtc');
+bot.on('message', async msg => {
   const chatId = msg.chat.id;
   if (msg.text === 'stop') {
     clearInterval(intervalId);
-    bot.sendMessage(chatId, "Пока перестаю напоминать 😉")
+    bot.sendMessage(chatId, 'Пока перестаю напоминать 😉');
+  }
+  if (msg.text === 'price') {
+    const price = await getWavesBtcPrice();
+    bot.sendMessage(chatId, 'ЦЕНА WAVES/BTC: ' + price);
   }
   if (msg.text === 'run') {
     clearInterval(intervalId);
-    bot.sendMessage(chatId, 'Окей, буду напоминать тебе каждые 2 часа');
+    bot.sendMessage(chatId, 'Окей, буду трекать цену WAVES/BTC раз в минуту');
 
-    intervalId = setInterval(() => {
-      const item = chooseRandom(state);
-      bot.sendMessage(chatId, '2 часа прошло\n' + formatItem(item), {
-        parse_mode: 'Markdown',
-      });
-    }, 1000 * 60 * 60 * 2);
+    intervalId = setInterval(async () => {
+      const price = await getWavesBtcPrice();
+      console.log(Date.now(), price);
+      if (price < '0.00060000') {
+        bot.sendMessage(chatId, 'ЦЕНА WAVES/BTC: ' + price);
+      }
+    }, 1000 * 60);
   }
 
   if (triggers.some(t => t.test(msg.text.toLowerCase()))) {
