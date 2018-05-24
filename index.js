@@ -2,7 +2,7 @@ const { BOT_TOKEN } = process.env;
 
 const Bot = require('node-telegram-bot-api');
 const fetch = require('node-fetch');
-const state = require('./things.json');
+const state = require('./things.json').filter(i => i.active !== false);
 const app = require('./httpServer');
 
 const bot = new Bot(BOT_TOKEN, { polling: true });
@@ -19,6 +19,7 @@ const triggers = [
 const chooseRandom = require('./chooseRandom');
 const formatItem = require('./Views/itemFull');
 const { renderStatusAll } = require('./Views/state');
+
 let intervalId = null;
 const { getWavesBtcPrice } = require('./checkWavesBtc');
 bot.on('message', async msg => {

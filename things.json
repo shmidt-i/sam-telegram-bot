@@ -9,7 +9,8 @@
     "name": "Совершенный код | Стив Макконнелл",
     "cta": "📖 Прочитай главу! 📖",
     "url": null,
-    "type": "book"
+    "type": "book",
+    "active": false
   },
   {
     "state": {
@@ -52,6 +53,19 @@
     "name": "Бизнес для чайников",
     "cta": "👓 Посмотри лекцию 👓",
     "type": "online",
-    "url": "http://lectoriy.mipt.ru/course/Business-Beginners-14L/lectures"
+    "url": "http://lectoriy.mipt.ru/course/Business-Beginners-14L/lectures",
+    "active": false
+  },
+  {
+    "state": {
+      "estimateParts": 274,
+      "progressParts": 0
+    },
+    "priority": 8,
+    "name": "The Complete Junior to Senior Web Developer Roadmap",
+    "cta": "👓 Посмотри видос 👓",
+    "type": "online",
+    "url":
+      "https://www.udemy.com/the-complete-junior-to-senior-web-developer-roadmap/learn/v4/overview"
   }
 ]
