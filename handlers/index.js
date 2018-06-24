@@ -5,7 +5,7 @@ const { T } = require('ramda');
  * @typedef handler
  * @function
  * @param { Request } req
- * @returns { Result Error Response }
+ * @returns { Task Error Response }
  */
 /**
  * [
