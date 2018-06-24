@@ -1,0 +1,10 @@
+version: '2'
+services:
+  tbot:
+    env_file:
+      - ".env"
+    build: .
+    command: node index.js
+    ports:
+      - 3000:3000
+    
